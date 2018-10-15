@@ -15,6 +15,7 @@ class ImagePostViewController: ShiftableViewController {
         super.viewDidLoad()
         
         setImageViewHeight(with: 1.0)
+        titleTextField.delegate = self
         
         updateViews()
     }
@@ -112,15 +113,74 @@ class ImagePostViewController: ShiftableViewController {
         view.layoutSubviews()
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return true
+    }
+    
     var postController: PostController!
     var post: Post?
     var imageData: Data?
+    private var originalImage: UIImage? {
+        didSet {
+            updateImage()
+        }
+    }
+    private let filter = CIFilter(name: "CIColorControls")!
+    private let filter2 = CIFilter(name: "CIVignette")!
+    private let context = CIContext(options: nil)
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var chooseImageButton: UIButton!
     @IBOutlet weak var imageHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var postButton: UIBarButtonItem!
+    @IBOutlet weak var brightnessSlider: UISlider!
+    @IBOutlet weak var contrastSlider: UISlider!
+    @IBOutlet weak var saturationSlider: UISlider!
+    @IBOutlet weak var radiusSlider: UISlider!
+    @IBOutlet weak var intensitySlider: UISlider!
+    
+    
+    @IBAction func changeBrightness(_ sender: UISlider) {
+        updateImage()
+    }
+    @IBAction func changeContrast(_ sender: UISlider) {
+        updateImage()
+    }
+    @IBAction func changeSaturation(_ sender: UISlider) {
+        updateImage()
+    }
+    @IBAction func changeRadius(_ sender: UISlider) {
+        updateImage()
+    }
+    @IBAction func changeIntensity(_ sender: UISlider) {
+        updateImage()
+    }
+    
+    func updateImage() {
+        guard let originalImage = originalImage else { return }
+        imageView.image = image(byFiltering: originalImage)
+    }
+    
+    private func image(byFiltering image: UIImage) -> UIImage? {
+        guard let cgImage = image.cgImage else { return originalImage }
+        
+        let ciImage = CIImage(cgImage: cgImage)
+        filter.setValue(ciImage, forKey: kCIInputImageKey)
+        filter.setValue(brightnessSlider.value, forKey: kCIInputBrightnessKey)
+        filter.setValue(contrastSlider.value, forKey: kCIInputContrastKey)
+        filter.setValue(saturationSlider.value, forKey: kCIInputSaturationKey)
+        
+        filter2.setValue(filter.outputImage, forKey: kCIInputImageKey)
+        filter2.setValue(radiusSlider.value, forKey: kCIInputRadiusKey)
+        filter2.setValue(intensitySlider.value, forKey: kCIInputIntensityKey)
+        
+        guard let outputCIImage = filter2.outputImage,
+            let outputCGImage = context.createCGImage(outputCIImage, from: outputCIImage.extent) else { return nil }
+        
+        return UIImage(cgImage: outputCGImage)
+    }
 }
 
 extension ImagePostViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -131,11 +191,9 @@ extension ImagePostViewController: UIImagePickerControllerDelegate, UINavigation
         
         picker.dismiss(animated: true, completion: nil)
         
-        guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
+        originalImage = info[.originalImage] as? UIImage
         
-        imageView.image = image
-        
-        setImageViewHeight(with: image.ratio)
+        setImageViewHeight(with: originalImage?.ratio ?? 1.0)
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
