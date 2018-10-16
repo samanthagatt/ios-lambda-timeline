@@ -66,7 +66,9 @@ class ImagePostDetailTableViewController: UITableViewController {
             self.createTextComment()
         }
         let audioCommentAction = UIAlertAction(title: "Audio", style: .default) { (_) in
-            // Present modal view
+            let createAudioCommentStoryboard = UIStoryboard(name: "CreateAudioComment", bundle: nil)
+            guard let createAudioCommentVC = createAudioCommentStoryboard.instantiateInitialViewController() else { return }
+            self.present(createAudioCommentVC, animated: true, completion: nil)
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         alert.addAction(textCommentAction)
