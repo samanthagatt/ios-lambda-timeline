@@ -128,6 +128,8 @@ class ImagePostViewController: ShiftableViewController {
     }
     private let filter = CIFilter(name: "CIColorControls")!
     private let filter2 = CIFilter(name: "CIVignette")!
+    private let filter3 = CIFilter(name: "CISepiaTone")!
+    private let filter4 = CIFilter(name: "CIUnsharpMask")!
     private let context = CIContext(options: nil)
     
     @IBOutlet weak var imageView: UIImageView!
@@ -140,21 +142,12 @@ class ImagePostViewController: ShiftableViewController {
     @IBOutlet weak var saturationSlider: UISlider!
     @IBOutlet weak var radiusSlider: UISlider!
     @IBOutlet weak var intensitySlider: UISlider!
+    @IBOutlet weak var sepiaSlider: UISlider!
+    @IBOutlet weak var sharpenRadiusSlider: UISlider!
+    @IBOutlet weak var sharpenIntensitySlider: UISlider!
     
     
-    @IBAction func changeBrightness(_ sender: UISlider) {
-        updateImage()
-    }
-    @IBAction func changeContrast(_ sender: UISlider) {
-        updateImage()
-    }
-    @IBAction func changeSaturation(_ sender: UISlider) {
-        updateImage()
-    }
-    @IBAction func changeRadius(_ sender: UISlider) {
-        updateImage()
-    }
-    @IBAction func changeIntensity(_ sender: UISlider) {
+    @IBAction func editImage(_ sender: UISlider) {
         updateImage()
     }
     
@@ -176,7 +169,14 @@ class ImagePostViewController: ShiftableViewController {
         filter2.setValue(radiusSlider.value, forKey: kCIInputRadiusKey)
         filter2.setValue(intensitySlider.value, forKey: kCIInputIntensityKey)
         
-        guard let outputCIImage = filter2.outputImage,
+        filter3.setValue(filter2.outputImage, forKey: kCIInputImageKey)
+        filter3.setValue(sepiaSlider.value, forKey: kCIInputIntensityKey)
+        
+        filter4.setValue(filter3.outputImage, forKey: kCIInputImageKey)
+        filter4.setValue(sharpenRadiusSlider.value, forKey: kCIInputRadiusKey)
+        filter4.setValue(sharpenIntensitySlider.value, forKey: kCIInputIntensityKey)
+        
+        guard let outputCIImage = filter4.outputImage,
             let outputCGImage = context.createCGImage(outputCIImage, from: outputCIImage.extent) else { return nil }
         
         return UIImage(cgImage: outputCGImage)
