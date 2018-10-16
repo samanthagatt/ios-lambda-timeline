@@ -28,10 +28,7 @@ class ImagePostDetailTableViewController: UITableViewController {
         authorLabel.text = post.author.displayName
     }
     
-    // MARK: - Table view data source
-    
-    @IBAction func createComment(_ sender: Any) {
-        
+    private func createTextComment() {
         let alert = UIAlertController(title: "Add a comment", message: "Write your comment below:", preferredStyle: .alert)
         
         var commentTextField: UITextField?
@@ -55,6 +52,25 @@ class ImagePostDetailTableViewController: UITableViewController {
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         
         alert.addAction(addCommentAction)
+        alert.addAction(cancelAction)
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
+    // MARK: - Table view data source
+    
+    @IBAction func createComment(_ sender: Any) {
+        
+        let alert = UIAlertController(title: "Add a comment", message: nil, preferredStyle: .alert)
+        let textCommentAction = UIAlertAction(title: "Text", style: .default) { (_) in
+            self.createTextComment()
+        }
+        let audioCommentAction = UIAlertAction(title: "Audio", style: .default) { (_) in
+            // Present modal view
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alert.addAction(textCommentAction)
+        alert.addAction(audioCommentAction)
         alert.addAction(cancelAction)
         
         present(alert, animated: true, completion: nil)
