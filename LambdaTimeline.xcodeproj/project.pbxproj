@@ -186,8 +186,8 @@
 		46CFE7052171573200E7FF73 /* Operations */ = {
 			isa = PBXGroup;
 			children = (
-				46CFE7002171559500E7FF73 /* FetchMediaOperation.swift */,
 				46CFE6FE2171556D00E7FF73 /* ConcurrentOperation.swift */,
+				46CFE7002171559500E7FF73 /* FetchMediaOperation.swift */,
 			);
 			path = Operations;
 			sourceTree = "<group>";
