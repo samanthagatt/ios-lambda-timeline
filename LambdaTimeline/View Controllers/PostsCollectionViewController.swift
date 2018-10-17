@@ -30,9 +30,14 @@ class PostsCollectionViewController: UICollectionViewController, UICollectionVie
             self.performSegue(withIdentifier: "AddImagePost", sender: nil)
         }
         
+        let videoPostAction = UIAlertAction(title: "Video", style: .default) { (_) in
+            self.performSegue(withIdentifier: "ShowCreateVideoPost", sender: nil)
+        }
+        
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         
         alert.addAction(imagePostAction)
+        alert.addAction(videoPostAction)
         alert.addAction(cancelAction)
         
         self.present(alert, animated: true, completion: nil)
@@ -143,8 +148,8 @@ class PostsCollectionViewController: UICollectionViewController, UICollectionVie
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "AddImagePost" {
-            let destinationVC = segue.destination as? ImagePostViewController
+        if segue.identifier == "AddImagePost" || segue.identifier == "ShowCreateVideoPost" {
+            var destinationVC = segue.destination as? PostControllerViewController
             destinationVC?.postController = postController
             
         } else if segue.identifier == "ViewImagePost" {

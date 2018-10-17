@@ -9,7 +9,11 @@
 import UIKit
 import Photos
 
-class ImagePostViewController: ShiftableViewController {
+protocol PostControllerViewController {
+    var postController: PostController! { get set }
+}
+
+class ImagePostViewController: ShiftableViewController, PostControllerViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -7,21 +7,21 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>808485525137-c2dlco2osc9ser3h3vdtc63mje1p7v0l.apps.googleusercontent.com</string>
+	<string>117250187575-4ih3qbo7u6slv22dm8b2bhhk41djdfqi.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.808485525137-c2dlco2osc9ser3h3vdtc63mje1p7v0l</string>
+	<string>com.googleusercontent.apps.117250187575-4ih3qbo7u6slv22dm8b2bhhk41djdfqi</string>
 	<key>API_KEY</key>
-	<string>AIzaSyBsxkZILdOgb3kof1AyIK2gvdHDdsF-Dk8</string>
+	<string>AIzaSyCI8M7of-0KFB1GiAl95zexnWThNbcc4rQ</string>
 	<key>GCM_SENDER_ID</key>
-	<string>808485525137</string>
+	<string>117250187575</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.SamanthaGatt.LambdaTimeline</string>
 	<key>PROJECT_ID</key>
-	<string>lambda-timeline</string>
+	<string>samslambdatimeline</string>
 	<key>STORAGE_BUCKET</key>
-	<string>lambda-timeline.appspot.com</string>
+	<string>samslambdatimeline.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<true></true>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -33,8 +33,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:808485525137:ios:071b998f6bd5ad98</string>
+	<string>1:117250187575:ios:071b998f6bd5ad98</string>
 	<key>DATABASE_URL</key>
-	<string>https://lambda-timeline.firebaseio.com</string>
+	<string>https://samslambdatimeline.firebaseio.com</string>
 </dict>
 </plist>

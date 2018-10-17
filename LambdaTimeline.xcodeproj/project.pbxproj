@@ -7,10 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2228FF20217531560018CA7A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2228FF1F217531560018CA7A /* GoogleService-Info.plist */; };
 		2228FF4221767CD10018CA7A /* CreateAudioComment.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2228FF4121767CD10018CA7A /* CreateAudioComment.storyboard */; };
 		2228FF4421767F7D0018CA7A /* AudioCommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2228FF4321767F7D0018CA7A /* AudioCommentTableViewCell.swift */; };
 		2228FF46217684310018CA7A /* CreateAudioCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2228FF45217684310018CA7A /* CreateAudioCommentViewController.swift */; };
+		2228FF6C2177C3920018CA7A /* CameraPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2228FF6B2177C3920018CA7A /* CameraPreviewView.swift */; };
+		2228FF6E2177C4080018CA7A /* VideoPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2228FF6D2177C4080018CA7A /* VideoPostViewController.swift */; };
+		2228FF702177CCC10018CA7A /* VideoDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2228FF6F2177CCC10018CA7A /* VideoDetailsViewController.swift */; };
+		2228FF722177E09C0018CA7A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2228FF712177E09C0018CA7A /* GoogleService-Info.plist */; };
 		4646377C216FDE4B00E7FF73 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4646377B216FDE4B00E7FF73 /* AppDelegate.swift */; };
 		46463781216FDE4B00E7FF73 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4646377F216FDE4B00E7FF73 /* Main.storyboard */; };
 		46463783216FDE4C00E7FF73 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46463782216FDE4C00E7FF73 /* Assets.xcassets */; };
@@ -37,10 +40,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2228FF1F217531560018CA7A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2228FF4121767CD10018CA7A /* CreateAudioComment.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateAudioComment.storyboard; sourceTree = "<group>"; };
 		2228FF4321767F7D0018CA7A /* AudioCommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioCommentTableViewCell.swift; sourceTree = "<group>"; };
 		2228FF45217684310018CA7A /* CreateAudioCommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAudioCommentViewController.swift; sourceTree = "<group>"; };
+		2228FF6B2177C3920018CA7A /* CameraPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPreviewView.swift; sourceTree = "<group>"; };
+		2228FF6D2177C4080018CA7A /* VideoPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPostViewController.swift; sourceTree = "<group>"; };
+		2228FF6F2177CCC10018CA7A /* VideoDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoDetailsViewController.swift; sourceTree = "<group>"; };
+		2228FF712177E09C0018CA7A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		33A2B89DE9E21538434BD640 /* Pods-LambdaTimeline.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LambdaTimeline.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LambdaTimeline/Pods-LambdaTimeline.debug.xcconfig"; sourceTree = "<group>"; };
 		46463778216FDE4B00E7FF73 /* LambdaTimeline.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LambdaTimeline.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4646377B216FDE4B00E7FF73 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -95,7 +101,6 @@
 			isa = PBXGroup;
 			children = (
 				4646377A216FDE4B00E7FF73 /* LambdaTimeline */,
-				2228FF1F217531560018CA7A /* GoogleService-Info.plist */,
 				46463779216FDE4B00E7FF73 /* Products */,
 				2B7D7DE8669C7C706445FCCC /* Pods */,
 				7C2A25429FC0F968FC1D35E7 /* Frameworks */,
@@ -120,6 +125,7 @@
 				46463797216FFF7400E7FF73 /* Storyboards */,
 				46CFE7062171573F00E7FF73 /* Helpers */,
 				46463796216FFF6900E7FF73 /* Resources */,
+				2228FF712177E09C0018CA7A /* GoogleService-Info.plist */,
 			);
 			path = LambdaTimeline;
 			sourceTree = "<group>";
@@ -168,6 +174,8 @@
 				46A0366C2170158900E7FF73 /* SignInViewController.swift */,
 				46A0366921700F5100E7FF73 /* PostsCollectionViewController.swift */,
 				46CFE6F421707D0000E7FF73 /* ImagePostViewController.swift */,
+				2228FF6D2177C4080018CA7A /* VideoPostViewController.swift */,
+				2228FF6F2177CCC10018CA7A /* VideoDetailsViewController.swift */,
 				46D571F72173FC2700E7FF73 /* ImagePostDetailTableViewController.swift */,
 				2228FF45217684310018CA7A /* CreateAudioCommentViewController.swift */,
 			);
@@ -179,6 +187,7 @@
 			children = (
 				46CFE7022171572600E7FF73 /* ImagePostCollectionViewCell.swift */,
 				2228FF4321767F7D0018CA7A /* AudioCommentTableViewCell.swift */,
+				2228FF6B2177C3920018CA7A /* CameraPreviewView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -285,8 +294,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				46463786216FDE4C00E7FF73 /* LaunchScreen.storyboard in Resources */,
-				2228FF20217531560018CA7A /* GoogleService-Info.plist in Resources */,
 				46463783216FDE4C00E7FF73 /* Assets.xcassets in Resources */,
+				2228FF722177E09C0018CA7A /* GoogleService-Info.plist in Resources */,
 				46463781216FDE4B00E7FF73 /* Main.storyboard in Resources */,
 				2228FF4221767CD10018CA7A /* CreateAudioComment.storyboard in Resources */,
 			);
@@ -388,6 +397,7 @@
 				4646377C216FDE4B00E7FF73 /* AppDelegate.swift in Sources */,
 				46CFE6FD217154F500E7FF73 /* Networking.swift in Sources */,
 				46CFE6F521707D0000E7FF73 /* ImagePostViewController.swift in Sources */,
+				2228FF702177CCC10018CA7A /* VideoDetailsViewController.swift in Sources */,
 				46CFE6FF2171556D00E7FF73 /* ConcurrentOperation.swift in Sources */,
 				46463790216FFD1B00E7FF73 /* Post.swift in Sources */,
 				46CFE6F32170757F00E7FF73 /* User+DictionaryRepresentation.swift in Sources */,
@@ -399,9 +409,11 @@
 				464637992170048900E7FF73 /* FirebaseConvertible.swift in Sources */,
 				46A0366A21700F5100E7FF73 /* PostsCollectionViewController.swift in Sources */,
 				46D571F52173CF3E00E7FF73 /* UIImage+Ratio.swift in Sources */,
+				2228FF6C2177C3920018CA7A /* CameraPreviewView.swift in Sources */,
 				2228FF46217684310018CA7A /* CreateAudioCommentViewController.swift in Sources */,
 				46463792216FFDD900E7FF73 /* Comment.swift in Sources */,
 				2228FF4421767F7D0018CA7A /* AudioCommentTableViewCell.swift in Sources */,
+				2228FF6E2177C4080018CA7A /* VideoPostViewController.swift in Sources */,
 				46CFE6F721707FA600E7FF73 /* UIViewController+InformationalAlert.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

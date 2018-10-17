@@ -23,7 +23,7 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.googleusercontent.apps.808485525137-c2dlco2osc9ser3h3vdtc63mje1p7v0l</string>
+				<string>com.googleusercontent.apps.117250187575-4ih3qbo7u6slv22dm8b2bhhk41djdfqi</string>
 			</array>
 		</dict>
 	</array>
@@ -31,6 +31,10 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>LambdaTImeline needs access to your camera for you to create video posts</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>LambdaTImeline needs access to your microphone for you to create video posts</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>In order to allow you to add photos to posts</string>
 	<key>UILaunchStoryboardName</key>
