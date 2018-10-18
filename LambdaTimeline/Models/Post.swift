@@ -8,6 +8,7 @@
 
 import Foundation
 import FirebaseAuth
+import MapKit
 
 enum MediaType: String {
     case image
@@ -15,15 +16,16 @@ enum MediaType: String {
     case video
 }
 
-struct Post {
+class Post: NSObject, MKAnnotation {
     
-    init(title: String, mediaType: MediaType, mediaURL: URL, ratio: CGFloat? = nil, author: Author, timestamp: Date = Date()) {
+    init(title: String, coordinate: CLLocationCoordinate2D? = nil, mediaType: MediaType, mediaURL: URL, ratio: CGFloat? = nil, author: Author, timestamp: Date = Date()) {
         self.mediaURL = mediaURL
         self.mediaType = mediaType
         self.ratio = ratio
         self.author = author
         self.comments = [Comment(text: title, author: author)]
         self.timestamp = timestamp
+        self.coordinate = coordinate ?? CLLocationCoordinate2D(latitude: -47.864774, longitude: -14.578341)
     }
     
     init?(dictionary: [String : Any], id: String) {
@@ -34,7 +36,10 @@ struct Post {
             let authorDictionary = dictionary[Post.authorKey] as? [String: Any],
             let author = Author(dictionary: authorDictionary),
             let timestampTimeInterval = dictionary[Post.timestampKey] as? TimeInterval,
-            let captionDictionaries = dictionary[Post.commentsKey] as? [[String: Any]] else { return nil }
+            let captionDictionaries = dictionary[Post.commentsKey] as? [[String: Any]],
+            let coordinates = dictionary[Post.coordinatesKey] as? [String: Double],
+            let lat = coordinates[Post.latitudeKey],
+            let lon = coordinates[Post.longitudeKey] else { return nil }
         
         self.mediaURL = mediaURL
         self.mediaType = mediaType
@@ -43,6 +48,7 @@ struct Post {
         self.timestamp = Date(timeIntervalSince1970: timestampTimeInterval)
         self.comments = captionDictionaries.compactMap({ Comment(dictionary: $0) })
         self.id = id
+        self.coordinate = CLLocationCoordinate2D(latitude: lat, longitude: lon)
     }
     
     var dictionaryRepresentation: [String : Any] {
@@ -67,8 +73,12 @@ struct Post {
     var id: String?
     var ratio: CGFloat?
     
+    var coordinate: CLLocationCoordinate2D
     var title: String? {
         return comments.first?.text
+    }
+    var subtitle: String? {
+        return author.displayName
     }
     
     static private let mediaKey = "media"
@@ -78,4 +88,7 @@ struct Post {
     static private let commentsKey = "comments"
     static private let timestampKey = "timestamp"
     static private let idKey = "id"
+    static private let coordinatesKey = "coordinates"
+    static private let latitudeKey = "lat"
+    static private let longitudeKey = "lon"
 }
